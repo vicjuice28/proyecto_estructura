@@ -1,0 +1,4 @@
+Hola que tal este es un documento de prueba para probar Github 
+en Linux y sus comandos en el mismo
+
+*IGNORAR*
