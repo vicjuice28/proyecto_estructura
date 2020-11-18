@@ -20,14 +20,14 @@ int main() {
     cout<<lista.get(2)<<endl;
     cout<<lista.get(3)<<endl;
     cout<<lista.get(4)<<endl;
+    lista.pop(2);
     
-    
+    cout<<"\nMostrando y eliminando elementos..."<<endl;
     cout<<lista.back()<<endl;
     lista.pop_back();
     cout<<lista.back()<<endl;
     lista.pop_back();
     cout<<lista.back()<<endl;
-    lista.pop_back();
     lista.pop_front();
     cout<<"El tamaño es: "<<lista.size()<<endl;
 
