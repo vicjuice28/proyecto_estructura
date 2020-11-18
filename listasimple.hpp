@@ -93,13 +93,35 @@ void Lista<T>::clear() {
 
 template <class T>
 void Lista<T>::push(T d, int i){
+    
+    
+    if(empty()){
 
-    //Falta por agregar
+
+
+    }
+    Nodo *n = new Nodo(d);
+    Nodo *aux = frente;
+    Nodo *ant = frente;
+    while(tam-1!=i){
+        ant = ant->siguiente;
+        i++;
+    }
+    while(tam!=i){
+        aux = aux->siguiente;
+        i++;
+
+    }
+    ant->siguiente = n;
+    n->siguiente = aux;
+    tam++;
+
+
 }
 
 template <class T>
 void Lista<T>::pop(T d, int i){
-
+    
     //Falta por agregar
 }
 
