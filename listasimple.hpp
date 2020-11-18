@@ -36,7 +36,7 @@ class Lista {
         void push(T d, int i);
         void pop(T d, int i);
         void set(T d, int i);
-        T get(T d, int i);
+        T get(int i);
         void push_back(T d);
         void pop_back();
         ~Lista(){
@@ -112,7 +112,7 @@ void Lista<T>::set(T d, int i){
 
 
 template <class T>
-T Lista<T>::get(T d, int i){
+T Lista<T>::get(int i){
 
     //Falta por agregar
 }
@@ -134,14 +134,17 @@ void Lista<T>::push_back(T d){
 
 template <class T>
 void Lista<T>::pop_back(){
-    Nodo *aux = final;
+    int j = 1;
+    
     Nodo *ant = frente;
-    while(int j=1 < tam-1){
+    while(j < tam-1){
         ant = ant->siguiente;
         j++;
         
     }
-    final = ant;
+    Nodo *aux = final;
+     final= ant;
+     final->siguiente = nullptr;
     delete aux;
     tam--;
 
