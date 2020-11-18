@@ -13,6 +13,9 @@ int main() {
     lista.push_back(3);
     lista.push_back(4); 
     cout<<"El tamaño es: "<< lista.size()<<endl;
+    cout<<"El dato en en la posición buscada es: "<<lista.get(1)<<endl;
+    lista.set(23,1);
+    cout<<"El dato actualizado es: "<<lista.get(1)<<endl;
 
     cout<<lista.back()<<endl;
     lista.pop_back();

@@ -106,15 +106,42 @@ void Lista<T>::pop(T d, int i){
 
 template <class T>
 void Lista<T>::set(T d, int i){
+    if(empty()){
 
-    //Falta por agregar
+        std::cout<<"Nada por cambiar, lista vacia";
+    }
+
+    else{
+        Nodo *aux = frente;
+        while(tam!=i){
+            aux = aux->siguiente;
+            i++;
+        }
+        aux->dato = d;
+
+
+
+    }
 }
 
 
 template <class T>
 T Lista<T>::get(int i){
+    if(empty()){
 
-    //Falta por agregar
+        return 0;
+    }
+    else {
+
+    Nodo *aux = frente;
+    while(tam!=i){
+        aux = aux->siguiente;
+        i++;
+        }
+    return aux->dato;
+
+
+    }
 }
 
 template <class T>
