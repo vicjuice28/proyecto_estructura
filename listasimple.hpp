@@ -15,6 +15,7 @@ class Lista {
         };
         Nodo *frente;
         Nodo *final;
+        
         int tam;
         int i;
 
@@ -37,12 +38,12 @@ class Lista {
         void set(T d, int i);
         T get(T d, int i);
         void push_back(T d);
-        void pop_back(T d);
+        void pop_back();
         ~Lista(){
             clear();
         }
 };
-// Implementacion
+// Implementacion+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 template <class T>
 void Lista<T>::push_front(T d) {
     Nodo *n = new Nodo(d);
@@ -121,8 +122,10 @@ void Lista<T>::push_back(T d){
     Nodo *n = new Nodo(d);
     if(empty()) {
         frente = n;
+        
     } else {
         final->siguiente = n;
+        
     }
     final = n;
     tam++;
@@ -130,8 +133,17 @@ void Lista<T>::push_back(T d){
 }
 
 template <class T>
-void Lista<T>::pop_back(T d){
-
+void Lista<T>::pop_back(){
+    Nodo *aux = final;
+    Nodo *ant = frente;
+    while(int j=1 < tam-1){
+        ant = ant->siguiente;
+        j++;
+        
+    }
+    final = ant;
+    delete aux;
+    tam--;
 
 }
 
