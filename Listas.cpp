@@ -11,6 +11,7 @@ int main() {
     lista.push_back(1);
     lista.push_back(2);
     lista.push_back(3);
+    lista.push_back(4); 
     cout<<"El tamaño es: "<< lista.size()<<endl;
 
     cout<<lista.back()<<endl;
@@ -19,11 +20,13 @@ int main() {
     lista.pop_back();
     cout<<lista.back()<<endl;
     lista.pop_back();
+    cout<<lista.back()<<endl;
+    lista.pop_front();
     cout<<"El tamaño es: "<<lista.size()<<endl;
 
-   // if(!lista.empty())
-       // cout<<lista.front()<<endl;
-   // else cout<<"Lista simple vacia."<<endl;
+    if(!lista.empty())
+    cout<<lista.front()<<endl;
+    else cout<<"Lista simple vacia."<<endl;
 
     
     

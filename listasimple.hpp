@@ -135,18 +135,25 @@ void Lista<T>::push_back(T d){
 template <class T>
 void Lista<T>::pop_back(){
     int j = 1;
-    
-    Nodo *ant = frente;
-    while(j < tam-1){
+    if(empty()){
+
+        final = frente;
+    }
+    else{
+
+        Nodo *ant = frente;
+        while(j < tam-1){
         ant = ant->siguiente;
         j++;
         
-    }
+        }
     Nodo *aux = final;
      final= ant;
      final->siguiente = nullptr;
     delete aux;
     tam--;
+    }
+    
 
 }
 
