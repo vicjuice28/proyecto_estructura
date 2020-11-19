@@ -29,10 +29,10 @@ int main() {
 
 
     cout<<"\nMostrando lista desde la primera posición hasta la ultima"<<endl;
-    //cout<<lista.get(1)<<endl;
+    cout<<lista.get(1)<<endl;
     cout<<lista.get(2)<<endl;
     cout<<lista.get(3)<<endl;
-    cout<<lista.get(4)<<endl;
+    //cout<<lista.get(4)<<endl;
 
     cout<<"\nMostrando lista desde la ultima posicion hasta la ultima"<<endl;
     

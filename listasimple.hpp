@@ -143,7 +143,7 @@ void Lista<T>::pop(int i){
 
     ant->siguiente = aux->siguiente;
     delete aux;
-    //tam--;
+    tam--;
 
 }
 
