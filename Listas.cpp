@@ -17,9 +17,8 @@ int main() {
     cout<<lista.get(3)<<endl;
 
     cout<<"El tamaño es: "<< lista.size()<<endl;
-    lista.set(23,1);
     cout<<"El dato en en la posición buscada es: "<<lista.get(1)<<endl;
-   
+   lista.set(23,1);
     cout<<"El dato actualizado es: "<<lista.get(1)<<endl;
     lista.push(10,1);
     cout<<lista.get(1)<<endl;
@@ -37,9 +36,9 @@ int main() {
 
     cout<<"\nMostrando lista desde la ultima posicion hasta la ultima"<<endl;
     
-    cout<<lista.back()<<endl;
     cout<<lista.get(3)<<endl;
-    cout<<lista.front()<<endl;
+    cout<<lista.get(2)<<endl;
+    cout<<lista.get(1)<<endl;
     
     
     cout<<"\nMostrando y eliminando elementos..."<<endl;

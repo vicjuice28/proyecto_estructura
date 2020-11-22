@@ -95,6 +95,8 @@ template <class T>
 void Lista<T>::push(T d, int i){
     
     Nodo *n = new Nodo(d);
+    int J = i;
+    int k = i;
     if(empty()){
     frente = n;
     final = n;
@@ -106,13 +108,13 @@ void Lista<T>::push(T d, int i){
 
     Nodo *aux = frente;
     Nodo *ant = frente;
-    while(tam-1!=i){
+    while(tam-1!=J){
         ant = ant->siguiente;
-        i++;
+        J++;
     }
-    while(tam!=i){
+    while(tam!=k){
         aux = aux->siguiente;
-        i++;
+        k++;
 
     }
     ant->siguiente = n;
@@ -129,15 +131,17 @@ void Lista<T>::pop(int i){
     
     Nodo *aux = frente;
     Nodo *ant = frente;
+    int J = i;
+    int k = i;
 
-    while(tam-1!=i){
+    while(tam-1!=J){
         ant = ant->siguiente;
-        i++;
+        J++;
     }
 
-    while(tam!=i){
+    while(tam!=k){
         aux = aux->siguiente;
-        i++;
+        k++;
 
     }
 
@@ -150,6 +154,7 @@ void Lista<T>::pop(int i){
 
 template <class T>
 void Lista<T>::set(T d, int i){
+    int J = i;
     if(empty()){
 
         std::cout<<"Nada por cambiar, lista vacia";
@@ -157,9 +162,9 @@ void Lista<T>::set(T d, int i){
 
     else{
         Nodo *aux = frente;
-        while(tam!=i){
+        while(tam!=J){
             aux = aux->siguiente;
-            i++;
+            J++;
         }
         aux->dato = d;
 
@@ -171,6 +176,7 @@ void Lista<T>::set(T d, int i){
 
 template <class T>
 T Lista<T>::get(int i){
+    int J= i;
     if(empty()){
 
         return 0;
@@ -178,9 +184,9 @@ T Lista<T>::get(int i){
     else {
 
     Nodo *aux = frente;
-    while(tam!=i){
+    while(tam!=J){
         aux = aux->siguiente;
-        i++;
+        J++;
         }
     return aux->dato;
 
