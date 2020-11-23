@@ -6,23 +6,16 @@ int main(){
 
     ListaDoblementeEnlazada list = ListaDoblementeEnlazada();
 
-    list.pushFront(1);
-    list.pushFront(2);
-    list.pushFront(3);
-    list.pushFront(4);
-    list.pushFront(5);
-    list.pushFront(6);
-    list.pushFront(7);
-    list.pushFront(8);
-    list.pushFront(9);
-    list.set(9000, 5);
+    list.pushBack(1);
+    list.pushBack(2);
+    list.pushBack(3);
+
+    list.popFirst();
+    list.popFirst();
+
+    cout << list.getSize();
 
 
-
-    cout << " \n SIN BORRRAR \n";
-    list.showAllFromFront();
-    cout << "\n";
-    list.showAllFromBack();
 
 
 
