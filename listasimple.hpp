@@ -2,6 +2,7 @@
 #define LISTA_SIMPLE
 
 template <class T>
+
 class Lista {
     private:
         class Nodo {
@@ -13,6 +14,8 @@ class Lista {
                     this->siguiente = nullptr;
                 }
         };
+
+        
         Nodo *frente;
         Nodo *final;
         int tam;
@@ -25,6 +28,8 @@ class Lista {
             tam = 0;
             i = 0;
         }
+
+        
         void push_front(T d);
         void pop_front();
         T front();
@@ -42,6 +47,8 @@ class Lista {
             clear();
         }
 };
+
+
 // Implementacion
 template <class T>
 void Lista<T>::push_front(T d) {
@@ -56,6 +63,9 @@ void Lista<T>::push_front(T d) {
     
     tam++;
 }
+
+
+
 template <class T>
 void Lista<T>::pop_front() {
     Nodo *aux = frente;
