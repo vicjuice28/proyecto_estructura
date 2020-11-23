@@ -58,7 +58,7 @@ class ListaDoblementeEnlazada{
             void set(int dato, int position);
 
             //debería ser un metodo privado
-            int searchNodo(int position);
+            void searchNodo(int position);
 
             void showAllFromFront();
             void showAllFromBack();
@@ -126,7 +126,7 @@ void ListaDoblementeEnlazada::push(int dato, int position){
 }
 
 
-int ListaDoblementeEnlazada::searchNodo(int position){
+void ListaDoblementeEnlazada::searchNodo(int position){
     auxUniversal = frente;
 
     while ( position != 1 ){
@@ -151,17 +151,9 @@ void ListaDoblementeEnlazada::pop( int position){
     if ( isEmpty() ){
         cout << "Lista vacía";
     }
-    else if ( tamanio == 1 )
-    {
-            cout << "La lista quedará vacía" << endl ;
-            frente = nullptr;
-            final = nullptr;
-            tamanio--;
-    }
     else{
         if (position == 1) return popFirst();
         if (position == tamanio) return popLast();
-        
         if ( position <= tamanio ){ 
             searchNodo(position);
             auxUniversal->anterior->siguiente = auxUniversal->siguiente;
@@ -186,13 +178,6 @@ void ListaDoblementeEnlazada::popFirst(){
         delete aux;
         tamanio--;
     }
-    else if ( tamanio == 1 )
-    {
-            cout << "La lista quedará vacía" << endl ;
-            frente = nullptr;
-            final = nullptr;
-            tamanio--;
-    }
     else{
         cout << "Lista vacía";
     }
@@ -206,14 +191,6 @@ void ListaDoblementeEnlazada::popLast(){
         final->siguiente = nullptr;
         delete aux;
         tamanio--;
-    }
-    else if ( tamanio == 1 )
-    {
-            cout << "La lista quedará vacía" << endl ;
-            frente = nullptr;
-            final = nullptr;
-            tamanio--;
-
     }
     else{
         cout << "Lista vacía";

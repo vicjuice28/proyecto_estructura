@@ -277,10 +277,11 @@ int main(){
     list.pushBack(2);
     list.pushBack(3);
 
-    list.popFirst();
-    list.popFirst();
+    list.pushBack(1);
+    list.pushBack(2);
+    list.pushBack(3);
 
-    cout << list.getSize();
+    list.showAllFromFront();
 
 
 
