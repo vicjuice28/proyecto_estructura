@@ -142,7 +142,6 @@ int ListaDoblementeEnlazada::get(int position){
 
 void ListaDoblementeEnlazada::set(int dato, int position){
     searchNodo(position);
-
     auxUniversal->dato = dato;
 }
 
