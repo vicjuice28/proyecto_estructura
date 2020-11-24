@@ -156,10 +156,19 @@ void ListaDoblementeEnlazada::pop( int position){
         if (position == 1) return popFirst();
         if (position == tamanio) return popLast();
         if ( position <= tamanio ){ 
-            searchNodo(position);
-            auxUniversal->anterior->siguiente = auxUniversal->siguiente;
-            auxUniversal->siguiente->anterior = auxUniversal->anterior;
-
+            
+            if ( tamanio == 1 ){
+                Nodo *auxx;
+                
+                auxx = frente;
+                frente = frente->siguiente;
+                delete auxx;
+            }
+            else{
+                searchNodo(position);
+                auxUniversal->anterior->siguiente = auxUniversal->siguiente;
+                auxUniversal->siguiente->anterior = auxUniversal->anterior;           
+            }
             tamanio--;
 
         }
@@ -173,10 +182,17 @@ void ListaDoblementeEnlazada::pop( int position){
 void ListaDoblementeEnlazada::popFirst(){
     if ( !isEmpty()  ){
         Nodo *aux = frente;
-
-        frente = frente->siguiente;
-        frente->anterior = nullptr;
-        delete aux;
+        
+        if ( tamanio == 1 ){        
+                aux = frente;
+                frente = frente->siguiente;
+                delete aux;
+        }
+        else{
+            frente = frente->siguiente;
+            frente->anterior = nullptr;
+            delete aux;
+        }
         tamanio--;
     }
     else{
@@ -187,10 +203,19 @@ void ListaDoblementeEnlazada::popFirst(){
 void ListaDoblementeEnlazada::popLast(){
     if ( !isEmpty()  ){
         Nodo *aux = final;
-        final = final->anterior;
-        final->siguiente = nullptr;
-        delete aux;
+
+        if ( tamanio == 1 ){        
+                aux = frente;
+                frente = frente->siguiente;
+                delete aux;
+        }
+        else{
+            final = final->anterior;
+            final->siguiente = nullptr;
+            delete aux;
+        }
         tamanio--;
+
     }
     else{
         cout << "Lista vacía";

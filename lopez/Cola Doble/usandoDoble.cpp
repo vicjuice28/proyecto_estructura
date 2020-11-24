@@ -65,12 +65,29 @@ int main(){
     list.showAllFromFront();
     cout << "El tamaño de la lista est: " << list.getSize() << endl;
 
+
+        cout << "\n\n ---------- VOLVIENDO A INSERTAR DATOS ------- \n";
+
+
     list.pushBack(1); // 1
     list.pushBack(2); // 1, 2
     list.pushBack(3); // 1, 2, 3
 
 
     list.showAllFromFront();
+
+    
+    cout << "\n\n ---------- LIMPIANDO con BACKPOP o FRONTPOP ------- \n";
+
+    list.popFirst();
+    list.popFirst();
+
+    list.showAllFromFront();
+    if ( list.isEmpty() ){
+        cout << " \n\n FELICIDADES la lista está vacía";
+    }
+
+    
 
 
 
