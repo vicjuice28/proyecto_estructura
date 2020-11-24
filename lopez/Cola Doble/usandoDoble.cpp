@@ -57,7 +57,23 @@ int main(){
     
     cout << "El dato en la posicion de 2 es: " << list.get(2) << "\n" ;
     
+
+
+    cout << "\n\n ---------- LIMPIANDO LISTA ------- \n";
     
+    list.clear();
+    list.showAllFromFront();
+    cout << "El tamaño de la lista est: " << list.getSize() << endl;
+
+    list.pushBack(1); // 1
+    list.pushBack(2); // 1, 2
+    list.pushBack(3); // 1, 2, 3
+
+
+    list.showAllFromFront();
+
+
+
 
 
 

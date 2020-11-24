@@ -54,6 +54,8 @@ class ListaDoblementeEnlazada{
             void popLast();
             void pop(int position);
 
+            void clear();
+
             int get(int position);
             void set(int dato, int position);
 
@@ -185,7 +187,6 @@ void ListaDoblementeEnlazada::popFirst(){
 void ListaDoblementeEnlazada::popLast(){
     if ( !isEmpty()  ){
         Nodo *aux = final;
-
         final = final->anterior;
         final->siguiente = nullptr;
         delete aux;
@@ -228,7 +229,22 @@ void ListaDoblementeEnlazada::showAllFromBack(){
 
 
 
+void ListaDoblementeEnlazada::clear(){
 
+    Nodo *auxx = nullptr; 
+
+    while ( !isEmpty() ){
+        auxx = frente;
+        frente = frente->siguiente;
+        delete auxx;
+
+        tamanio--;
+    }
+
+    frente = nullptr;
+    final = nullptr;
+
+}
 
 
 
