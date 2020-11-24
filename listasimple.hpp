@@ -27,7 +27,7 @@ class Lista {
             frente = nullptr;
             final = nullptr;
             tam = 0;
-            i = 0;
+            i = 1;
         }
 
         
@@ -48,13 +48,11 @@ class Lista {
             clear();
         }
 };
-<<<<<<< HEAD
 
 
 // Implementacion
-=======
-// Implementacion+++++++++++++++++++++++++++++++++++++++++++++++++++++++
->>>>>>> 0d61d96432fdb03a718e8953e50371c6a71f66b3
+
+
 template <class T>
 void Lista<T>::push_front(T d) {
     Nodo *n = new Nodo(d);
