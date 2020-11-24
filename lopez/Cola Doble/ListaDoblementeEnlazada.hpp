@@ -5,6 +5,8 @@
 
 using namespace std;
 
+template <class GENERICO>
+
 class ListaDoblementeEnlazada{
 
     private:
@@ -13,11 +15,11 @@ class ListaDoblementeEnlazada{
 
             public:
 
-                int dato;
+                GENERICO dato;
                 Nodo *anterior;
                 Nodo *siguiente;
 
-                Nodo(int _dato){
+                Nodo(GENERICO _dato){
                     dato = _dato;
                     anterior = nullptr;
                     siguiente = nullptr;
@@ -39,16 +41,16 @@ class ListaDoblementeEnlazada{
 
         
             //
-            void push(int dato, int position);
-            void pushFront(int dato);
-            void pushBack(int dato);
+            void push(GENERICO dato, int position);
+            void pushFront(GENERICO dato);
+            void pushBack(GENERICO dato);
 
             
             bool isEmpty();
             int getSize();
 
-            int getFirstNodo();
-            int getLastNodo();
+            GENERICO getFirstNodo();
+            GENERICO getLastNodo();
 
             void popFirst();
             void popLast();
@@ -56,8 +58,8 @@ class ListaDoblementeEnlazada{
 
             void clear();
 
-            int get(int position);
-            void set(int dato, int position);
+            GENERICO get(int position);
+            void set(GENERICO dato, int position);
 
             //debería ser un metodo privado
             void searchNodo(int position);
@@ -71,8 +73,8 @@ class ListaDoblementeEnlazada{
 };
 
 //implementaciones
-
-void ListaDoblementeEnlazada::pushFront(int _dato){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::pushFront(GENERICO _dato){
     Nodo *nuevoNodo = new Nodo(_dato);
 
     if ( isEmpty() ){
@@ -89,7 +91,8 @@ void ListaDoblementeEnlazada::pushFront(int _dato){
     tamanio++;
 }
 
-void ListaDoblementeEnlazada::pushBack( int dato ){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::pushBack( GENERICO dato ){
     Nodo *nuevoNodo = new Nodo( dato );
 
     if ( isEmpty() ){
@@ -106,8 +109,8 @@ void ListaDoblementeEnlazada::pushBack( int dato ){
     tamanio++;
 }
 
-
-void ListaDoblementeEnlazada::push(int dato, int position){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::push(GENERICO dato, int position){
 
     if ( position <= tamanio ){ 
         Nodo *n = new Nodo( dato );
@@ -127,8 +130,8 @@ void ListaDoblementeEnlazada::push(int dato, int position){
 
 }
 
-
-void ListaDoblementeEnlazada::searchNodo(int position){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::searchNodo(int position){
     auxUniversal = frente;
 
     while ( position != 1 ){
@@ -137,18 +140,20 @@ void ListaDoblementeEnlazada::searchNodo(int position){
     }
 }
 
-int ListaDoblementeEnlazada::get(int position){
+template <class GENERICO>
+GENERICO ListaDoblementeEnlazada<GENERICO>::get(int position){
     searchNodo(position);
     return auxUniversal->dato;
 }
 
-void ListaDoblementeEnlazada::set(int dato, int position){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::set(GENERICO dato, int position){
     searchNodo(position);
     auxUniversal->dato = dato;
 }
 
-
-void ListaDoblementeEnlazada::pop( int position){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::pop( int position){
     if ( isEmpty() ){
         cout << "Lista vacía";
     }
@@ -178,8 +183,8 @@ void ListaDoblementeEnlazada::pop( int position){
     }
 }
 
-
-void ListaDoblementeEnlazada::popFirst(){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::popFirst(){
     if ( !isEmpty()  ){
         Nodo *aux = frente;
         
@@ -200,7 +205,8 @@ void ListaDoblementeEnlazada::popFirst(){
     }
 }
 
-void ListaDoblementeEnlazada::popLast(){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::popLast(){
     if ( !isEmpty()  ){
         Nodo *aux = final;
 
@@ -222,17 +228,18 @@ void ListaDoblementeEnlazada::popLast(){
     }
 }
 
-
-int ListaDoblementeEnlazada::getFirstNodo(){
+template <class GENERICO>
+GENERICO ListaDoblementeEnlazada<GENERICO>::getFirstNodo(){
     return frente->dato;
 }
 
-int ListaDoblementeEnlazada::getLastNodo(){
+template <class GENERICO>
+GENERICO ListaDoblementeEnlazada<GENERICO>::getLastNodo(){
     return final->dato;
 }
 
-
-void ListaDoblementeEnlazada::showAllFromFront(){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::showAllFromFront(){
     auxUniversal = frente;
     for ( int i = 0; i < tamanio ; i++){
         cout << auxUniversal->dato << endl;
@@ -240,7 +247,8 @@ void ListaDoblementeEnlazada::showAllFromFront(){
     }
 }
 
-void ListaDoblementeEnlazada::showAllFromBack(){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::showAllFromBack(){
     auxUniversal = final;
     for ( int e = 0; e < tamanio ; e++){
         cout << auxUniversal->dato << endl;
@@ -253,8 +261,8 @@ void ListaDoblementeEnlazada::showAllFromBack(){
 
 
 
-
-void ListaDoblementeEnlazada::clear(){
+template <class GENERICO>
+void ListaDoblementeEnlazada<GENERICO>::clear(){
 
     Nodo *auxx = nullptr; 
 
@@ -277,12 +285,13 @@ void ListaDoblementeEnlazada::clear(){
 
 
 
-
-bool ListaDoblementeEnlazada::isEmpty(){
+template <class GENERICO>
+bool ListaDoblementeEnlazada<GENERICO>::isEmpty(){
     return frente == nullptr;
 }
 
-int ListaDoblementeEnlazada::getSize(){
+template <class GENERICO>
+int ListaDoblementeEnlazada<GENERICO>::getSize(){
     return tamanio;
 }
 

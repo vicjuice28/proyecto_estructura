@@ -4,7 +4,7 @@ using namespace std;
 
 int main(){
 
-    ListaDoblementeEnlazada list = ListaDoblementeEnlazada();
+    ListaDoblementeEnlazada<int> list;
 
     list.pushBack(1); // 1
     list.pushBack(2); // 1, 2
@@ -81,25 +81,14 @@ int main(){
 
     list.popFirst();
     list.popFirst();
+    list.popLast();
 
     list.showAllFromFront();
     if ( list.isEmpty() ){
         cout << " \n\n FELICIDADES la lista está vacía";
     }
 
-    
-
-
-
-
-
-
-
-
-
-    
-    //cout << list.getFirstNodo() << endl;
-    //cout << list.getLastNodo() << endl;
+  
     
     return 0;
 }
