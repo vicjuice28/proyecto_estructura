@@ -6,9 +6,7 @@
 using namespace std;
 
 template <class GENERICO>
-
 class ListaDoblementeEnlazada{
-
     private:
 
         class Nodo{
@@ -111,8 +109,14 @@ void ListaDoblementeEnlazada<GENERICO>::pushBack( GENERICO dato ){
 
 template <class GENERICO>
 void ListaDoblementeEnlazada<GENERICO>::push(GENERICO dato, int position){
-
-    if ( position <= tamanio ){ 
+    if ( position == 1 ){
+        pushFront(dato);
+    }
+    else if (position == tamanio)
+    {
+        pushBack(dato);
+    }
+    else if ( position > 1 && position < tamanio ){ 
         Nodo *n = new Nodo( dato );
         searchNodo(position);
 
@@ -247,6 +251,7 @@ void ListaDoblementeEnlazada<GENERICO>::showAllFromFront(){
     }
 }
 
+
 template <class GENERICO>
 void ListaDoblementeEnlazada<GENERICO>::showAllFromBack(){
     auxUniversal = final;
@@ -279,12 +284,6 @@ void ListaDoblementeEnlazada<GENERICO>::clear(){
 
 }
 
-
-
-
-
-
-
 template <class GENERICO>
 bool ListaDoblementeEnlazada<GENERICO>::isEmpty(){
     return frente == nullptr;
@@ -294,7 +293,6 @@ template <class GENERICO>
 int ListaDoblementeEnlazada<GENERICO>::getSize(){
     return tamanio;
 }
-
 
 
 #endif

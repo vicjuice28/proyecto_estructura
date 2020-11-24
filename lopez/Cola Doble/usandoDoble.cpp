@@ -9,10 +9,11 @@ int main(){
     list.pushBack(1); // 1
     list.pushBack(2); // 1, 2
     list.pushBack(3); // 1, 2, 3
-    
+
     
 
-    list.pushFront(9); //       9, 1, 2, 3;
+    list.pushFront(9);//       9, 1, 2, 3;
+    //list.push(9, 1); 
     list.pushFront(8); //    8, 9, 1, 2, 3;
     list.pushFront(7); // 7, 8, 9, 1, 2, 3;
     
@@ -73,7 +74,6 @@ int main(){
     list.pushBack(2); // 1, 2
     list.pushBack(3); // 1, 2, 3
 
-
     list.showAllFromFront();
 
     
@@ -88,6 +88,19 @@ int main(){
         cout << " \n\n FELICIDADES la lista está vacía";
     }
 
+
+    ListaDoblementeEnlazada <string>nombres;
+
+    nombres.pushFront("Luis");
+    nombres.pushFront("Victor");
+    nombres.pushFront("Fernando");
+    nombres.pushBack("Nicole");
+
+    cout << " \n\n NOMBRES ----------- \n";
+    nombres.showAllFromFront();
+
+    
+    
   
     
     return 0;
