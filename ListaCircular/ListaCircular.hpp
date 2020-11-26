@@ -35,6 +35,8 @@ class ListaCircular{
 		}
 		void pushFront(int dato);
 		void pushBack(int dato);
+		void push(int dato, int position);
+		
 
 		int getSize();
 
@@ -47,6 +49,31 @@ class ListaCircular{
 			cout << "\n\nPosición 0:  " << nodos[0] << endl;
 			cout << "Posición final:  " << nodos[final] << endl;
 			
+		}
+
+		void showah(){
+			int h=0;
+			for ( int i = frente; i < tamanio; i++ ){
+			
+			
+
+				if ( i > capacidad ){
+					h = i - capacidad;
+					cout << "SOY MAYOR QUE LA LISTA AHHHHHHHHH";
+				}else{
+					h = i;
+				}
+
+				cout << "Posición [" << h << "] = " << nodos[h] << endl;
+			}
+
+			cout << "\n\nPosición 0:  " << nodos[frente] << endl;
+			cout << "Posición final:  " << nodos[final] << endl;
+			
+			
+
+			//cout << "Ahora : " << i << endl;	
+		
 		}
 		
 		
@@ -86,6 +113,8 @@ void ListaCircular::pushFront(int _dato) {
 		
 
 		for ( int i = 0; i < tamanio; i++ ){
+
+		
 			temp[ i + 1 ] = nodos[ i ];
 
 			//cout << "Ahora : " << i << endl;	
@@ -106,23 +135,80 @@ void ListaCircular::pushFront(int _dato) {
 void ListaCircular::pushBack(int _dato) {
     if( isEmpty() && !isFull() ) {
        resize();
-	   cout << "ESTOY VACIA\n\n";
+	//   cout << "ESTOY VACIA\n\n";
     }
 	else if ( isFull() )
 	{
 		
-	   cout << "ESTOY LLENA\n\n";
+	//   cout << "ESTOY LLENA\n\n";
 		resize();
 	}
-	cout << "PROCEDO A INSERTAR\n\n";
-	cout << "Voy a insertar el numero : \n\n" << _dato << endl;
-	cout << "En la posicion : \n\n" << getNextPosition(final) << endl;
+	//cout << "PROCEDO A INSERTAR\n\n";
+	//cout << "Voy a insertar el numero : \n\n" << _dato << endl;
+	//cout << "En la posicion : \n\n" << getNextPosition(final) << endl;
 	
 		final = getNextPosition( final );
 		nodos[ final ] = _dato;
 		tamanio++;
 	
 }
+
+
+void ListaCircular::push(int _dato, int _position){
+
+	if ( isFull() ){
+		resize();
+	}
+
+	int positionList = frente + _position;
+	cout << "La posición en la que se va insertar es: " << positionList << endl;
+
+	int *temp = new int [ capacidad ];
+		temp[positionList] = _dato;
+
+		//EL PROBLEMA ES CUANDO BORRE UN DATO Y TENGA QUE LLENAR ESOS ESPACIOS VACIOS
+
+		for (int i = frente; i < positionList; i++){
+			temp[i] = nodos[i];
+		}
+
+		int h;
+		for ( int i = positionList; i < tamanio; i++ ){
+			
+			
+
+			if ( i > capacidad ){
+				h = i - capacidad;
+				cout << "SOY MAYOR QUE LA LISTA AHHHHHHHHH";
+			}else{
+				h = i;
+			}
+
+			cout << "Ahora tempo [" << h+1 << "] --- y --- nodos [ " << h << "] ---"<<endl;
+			temp[ h + 1 ] = nodos[ h ];
+
+			//cout << "Ahora : " << i << endl;	
+		}
+
+		//show();
+		
+		delete[] nodos;
+		nodos = temp;
+
+
+		tamanio++;
+		final = getNextPosition( h );
+
+
+
+	
+	//en casd de que la lista no esté llena, recorro todos los datos
+
+	//encontrar la posicion
+}
+
+
+
 
 bool ListaCircular::isEmpty(){
 	return tamanio == 0;

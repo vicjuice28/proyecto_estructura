@@ -10,16 +10,18 @@ int main(){
     lista.pushFront(0);  
     lista.pushFront(1);
     lista.pushFront(2);
-    lista.pushFront(3);
-    lista.pushBack(4);
-    lista.pushBack(5);
-    lista.pushBack(6);
-    lista.pushBack(7);
-    lista.pushBack(8);
-    lista.pushBack(9);
-    lista.pushBack(10);
-    lista.pushFront(1111);  
-    lista.pushBack(1111);
+    lista.pushFront(4);
+    lista.pushFront(5);
+    lista.pushFront(6);
+    lista.pushFront(7);
+    lista.pushFront(9);
+    lista.pushFront(10);
+    lista.pushFront(11);
+    lista.pushFront(12);
+    
+    
+    
+    lista.push(555, 8);
     
     
     
