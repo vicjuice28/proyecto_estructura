@@ -5,13 +5,15 @@
 using namespace std;
 
 
+
+template <class GENERICO>
 class ListaCircular{
 	private:
 		int frente;
 		int final;
 		int tamanio;
 		int capacidad;
-		int *nodos;
+		GENERICO *nodos;
 		
 		void resize();
 
@@ -22,6 +24,16 @@ class ListaCircular{
 			return ((position + 1) % capacidad) ;
 		}
 
+		int getBackPosition(int position){
+			int n = ((position -1 ) % capacidad);
+			if ( n == -1 ){
+				return 12;
+			}
+			return n;
+		}
+
+		
+
 
 	public:
 		ListaCircular(){
@@ -29,18 +41,26 @@ class ListaCircular{
 			frente = 0;
 			final = capacidad - 1;
 			tamanio = 0;
-			nodos = new int[ capacidad ];
+			nodos = new GENERICO[ capacidad ];
 
 
 		}
-		void pushFront(int dato);
-		void pushBack(int dato);
-		void push(int dato, int position);
+		void pushFront(GENERICO dato);
+		void pushBack(GENERICO dato);
+		void push(GENERICO dato, int position);
 
 		void popFront();
 		void popBack();
+		void pop(int position);
+		void clear();
+
+		void set(GENERICO dato, int position);
+		GENERICO get(int position);
 
 		int getSize();
+		GENERICO getFirst();
+		GENERICO getLast();
+		
 		int getCapacidad(){
 			return capacidad;
 		}
@@ -48,7 +68,11 @@ class ListaCircular{
 
 		void show(){
 
-			int aux = frente;
+			if (tamanio == 0){
+				cout << "Lista vacía \n";
+			}
+			else{
+					int aux = frente;
 			for ( int i = 0; i < tamanio ; i++ )
 			{
 				if (getNextPosition(aux) == -1){
@@ -60,37 +84,17 @@ class ListaCircular{
 				aux++;
 			}
 
-			cout << "\n\nPosición frente:  " << frente << endl;
+			/*cout << "\n\nPosición frente:  " << frente << endl;
 			cout << "Posición final:  " << final << endl;
 			cout << "\n\n dato en la Posición frente:  " << nodos[frente] << endl;
 			cout << "dato en la Posición final:  " << nodos[final] << endl;
-			
-		}
-
-		void showah(){
-			int h=0;
-			for ( int i = frente; i < tamanio; i++ ){
-			
-			
-
-				if ( i > capacidad ){
-					h = i - capacidad;
-					cout << "SOY MAYOR QUE LA LISTA AHHHHHHHHH";
-				}else{
-					h = i;
-				}
-
-				cout << "Posición [" << h << "] = " << nodos[h] << endl;
+			*/
 			}
 
-			cout << "\n\nPosición 0:  " << nodos[frente] << endl;
-			cout << "Posición final:  " << nodos[final] << endl;
 			
-			
-
-			//cout << "Ahora : " << i << endl;	
-		
 		}
+
+		
 		
 		
 		bool isEmpty();
@@ -109,8 +113,8 @@ class ListaCircular{
 	
 };
 
-
-void ListaCircular::pushFront(int _dato) {
+template <class GENERICO>
+void ListaCircular<GENERICO>::pushFront(GENERICO _dato) {
 
 	//cout << "tamaño : " << tamanio << "  == capacidad : " << capacidad << endl;
 
@@ -123,14 +127,15 @@ void ListaCircular::pushFront(int _dato) {
 		resize();
 	}
 	
-		int *temp = new int [ capacidad ];
+		GENERICO *temp = new GENERICO [ capacidad ];
 		temp[frente] = _dato;
 
 		
-		int h;
+		int h = frente;
 		for ( int i = 0; i < tamanio; i++ ){
 
-			temp[ getNextPosition(i) ] = nodos[ getNextPosition(i-1) ];
+			temp[ getNextPosition(h) ] = nodos[ getNextPosition(h-1) ];
+			h++;
 
 			//cout << "Ahora : " << i << endl;	
 		}
@@ -147,7 +152,9 @@ void ListaCircular::pushFront(int _dato) {
 
 }
 
-void ListaCircular::pushBack(int _dato) {
+
+template <class GENERICO>
+void ListaCircular<GENERICO>::pushBack(GENERICO  _dato) {
     if( isEmpty() && !isFull() ) {
        resize();
 	//   cout << "ESTOY VACIA\n\n";
@@ -166,21 +173,19 @@ void ListaCircular::pushBack(int _dato) {
 		nodos[ final ] = _dato;
 		tamanio++;
 
-		cout << "PushBack, la posicion de final ahora es: " << final << endl;
 	
 }
 
-
-void ListaCircular::push(int _dato, int _position){
+template <class GENERICO>
+void ListaCircular<GENERICO>::push(GENERICO  _dato, int _position){
 
 	if ( isFull() ){
 		resize();
 	}
 
 	int positionList = frente + _position;
-	cout << "La posición en la que se va insertar es: " << positionList << endl;
 
-	int *temp = new int [ capacidad ];
+	GENERICO  *temp = new GENERICO  [ capacidad ];
 		temp[positionList] = _dato;
 
 		//EL PROBLEMA ES CUANDO BORRE UN DATO Y TENGA QUE LLENAR ESOS ESPACIOS VACIOS
@@ -200,7 +205,6 @@ void ListaCircular::push(int _dato, int _position){
 		
 		delete[] nodos;
 		nodos = temp;
-		cout << "La posicion actual de final es: " << final << " que será reemplazada por : " << getNextPosition( final ) << endl;
 		final = getNextPosition( final );
 		tamanio++;
 
@@ -213,37 +217,92 @@ void ListaCircular::push(int _dato, int _position){
 }
 
 
+template <class GENERICO>
+void ListaCircular<GENERICO>::popFront(){
 
-void ListaCircular::popFront(){
-
-	cout << "---Antes de hacer el popFront(), i final es: " << frente << endl; 
 
 	frente = getNextPosition( frente );
 	
-	cout << "----Despues de hacer el popFront(), i final es: " << frente << endl;
 	tamanio--;
 }
 
-void ListaCircular::popBack(){
-	cout << "Antes de hacer el popBack(), i final es: " << final << endl; 
-	final = getNextPosition( final-1 );
+template <class GENERICO>
+void ListaCircular<GENERICO>::popBack(){
+
+	if ( final == 0 ){
+		final = capacidad;
+	}
+	else
+	{
+		final = getBackPosition( final );
+	}
 	
-	cout << "Despues de hacer el popBack(), i final es: " << final << endl;
+
+	
+	if (final == -1){
+		final = 0;
+	}
+	
 	tamanio--;
 }
 
+template <class GENERICO>
+GENERICO ListaCircular<GENERICO>::get(int _position){
+	int aux = frente;
+			for ( int i = 0; i < tamanio ; i++ )
+			{
+				if (getNextPosition(aux) == -1){
+					aux++;
+					continue;
+				}
 
 
+		
 
-bool ListaCircular::isEmpty(){
+				if ( _position == i ){
+					return nodos[aux];
+					break;
+				}
+
+				aux++;
+			}
+
+}
+
+template <class GENERICO>
+void ListaCircular<GENERICO>::set(GENERICO  _dato, int _position){
+	int aux = frente;
+			for ( int i = 0; i < tamanio ; i++ )
+			{
+				if (getNextPosition(aux) == -1){
+					aux++;
+					continue;
+				}
+
+				if ( _position == i ){
+
+					nodos[aux] = _dato;
+					break;
+				}
+
+				aux++;
+			}
+
+}
+
+template <class GENERICO>
+bool ListaCircular<GENERICO>::isEmpty(){
 	return tamanio == 0;
 }
-bool ListaCircular::isFull(){
+
+template <class GENERICO>
+bool ListaCircular<GENERICO>::isFull(){
 	return tamanio == capacidad;
 }
 
 
-void ListaCircular::resize(){
+template <class GENERICO>
+void ListaCircular<GENERICO>::resize(){
 	
 	//cout << "La capacidad actual es 0: " << capacidad << endl;
 	
@@ -266,7 +325,7 @@ void ListaCircular::resize(){
 	int n = capacidad;
 	capacidad = capacidad + incremento;
 	//cout << "La capacidad actual es: " << capacidad << endl;
-	int *temp = new int [ capacidad ];
+	GENERICO  *temp = new GENERICO  [ capacidad ];
 
 	for ( int i = 0; i < n; i++ ){
 		temp[ i ] = nodos[ i ];
@@ -277,9 +336,89 @@ void ListaCircular::resize(){
 
 }
 
-int ListaCircular::getSize(){
+template <class GENERICO>
+int ListaCircular<GENERICO>::getSize(){
 	return tamanio;
 }
+
+template <class GENERICO>
+void ListaCircular<GENERICO>::clear(){
+	frente = 0;
+	final = -1;
+	tamanio = 0;
+	capacidad = 0;
+	delete nodos;
+	nodos = new GENERICO [ capacidad ];
+	
+}
+
+template <class GENERICO>
+void ListaCircular<GENERICO>::pop(int _position){
+
+	if ( _position == 0 ){
+		popFront();
+	}
+	else if (_position == tamanio)
+	{
+		popBack();
+	}
+	else{
+			int aux = frente;
+			for ( int i = 0; i < tamanio ; i++ )
+			{
+				if (getNextPosition(aux) == -1){
+					aux++;
+					continue;
+				}
+
+
+				if ( _position == i ){
+					break;
+				}
+
+				aux++;
+			}
+		
+
+		int principio = tamanio - (tamanio - _position);
+		GENERICO  *temp = new GENERICO  [ capacidad ];
+
+
+		///llena la primera parte
+		for (int i = frente; i < principio; i++){
+			temp[i] = nodos[i];
+		}
+		
+		int demas = tamanio - _position;
+
+		for ( int i = principio; i < (demas-1); i++ ){
+			
+			temp[ getNextPosition(i) ] = nodos[ getNextPosition(i+1) ];
+
+			//cout << "Ahora : " << i << endl;	
+		}
+
+		delete nodos;
+		nodos = temp;
+		final = getBackPosition( final );
+		tamanio--;
+	}
+
+	
+
+
+}
+
+template <class GENERICO>
+GENERICO ListaCircular<GENERICO>::getFirst(){
+	return nodos[frente];
+}
+
+template <class GENERICO>
+GENERICO ListaCircular<GENERICO>::getLast(){
+	return nodos[final];
+}
+
 
 
 #endif

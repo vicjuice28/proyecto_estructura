@@ -5,59 +5,77 @@ using namespace std;
 
 int main(){
 
-    ListaCircular lista;
-
-    lista.pushFront(0);  
-    lista.pushFront(1);
-    lista.pushFront(2);
-    lista.pushFront(4);
-    lista.pushFront(5);
-    lista.pushBack(6);
-    lista.pushBack(7);
-    lista.pushBack(8);
-    lista.pushBack(9);
-    lista.pushBack(10);
-    lista.pushBack(11);
-
-    lista.popFront();
-    lista.pushBack(22222);
-    
-    
+    ListaCircular <int> list;
 
 
-    lista.show();
-    cout << "\n El tamaño de la lista es: " << lista.getSize() <<endl;
+    cout << "\n\n --------------- Insercion de elementos ---------- \n\n";
     
+    list.pushFront(1);
+    list.pushFront(2);
+    list.pushFront(3);
+    list.pushBack(4);
+    list.pushBack(5);
+    list.pushBack(6);
+    list.pushBack(7);
+    list.pushBack(8);
     
-    cout << "\n La capacidad de la lista es: " << lista.getCapacidad() << endl;
-    
-    
-    
-    
-    
-    
-    
-    
+    list.push(0, 2);
+
+    list.show();
 
     
     
+    cout << "\n\n --------------- Eliminación de elementos ---------- \n\n";
+    
+    list.popFront();
+    list.popFront();
+    
+    list.popBack();
+    list.popBack();
+
+    list.pop(2);
+
+    list.show(); 
+
+    cout << "\n\n --------------- Obtención de datos ---------- \n\n";
+    cout << " El tamanio de la lista es de:  " << list.getSize() << endl;
+    cout << " El primer dato de la lista:  " << list.getFirst() << endl;
+    cout << " El ultimo dato de la lista:  " << list.getLast() << endl;
+    cout << " El 2do dato de la lista:  " << list.get(2) << endl;
+    
+
+    cout << "\n\n --------------- Limpieza de la lista ---------- \n\n";
+    list.clear();
+    list.show();
+        
+    cout << "\n\n --------------- Limpieza de la lista ---------- \n\n";
+    list.pushFront(1);
+    list.show();
+
+    cout << "\n\n --------------- Crecimiento de la lista ---------- \n\n";
+    list.pushFront(1);
+    list.pushFront(2);
+    list.pushFront(3);
+    list.pushFront(4);
+    list.pushFront(5);
+    list.pushFront(6);
+    list.pushFront(7);
+    list.pushFront(8);
+    list.pushFront(9);
+    list.pushFront(10);
+    list.pushFront(11);
+    list.pushFront(12);
+    list.show();
+    cout << "Tamanio de la lista: " << list.getSize();
     
     
     
-    //lista.pushBack(12);
 
     
-    
-    //lista.show();
-    //cout << "\n El tamaño de la lista es: " << lista.getSize();
-    //lista.pushFront(3);
-    //lista.pushFront(4);
-    
 
-    //lista.show();
-    //cout << "El primer nodo es: " <<lista.get2();
-    //cout << "El primer nodo es: " <<lista.get3();
-    
+
+        
+
 
     return 0;
 }
