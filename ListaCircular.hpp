@@ -1,10 +1,9 @@
-//#ifndef LISTACIRCULAR
-//#define LISTACIRCULAR
-
-//#define CAPACIDAD_INCREMENTO 12
+#ifndef LISTA_CIRCULAR
+#define LISTA_CIRCULAR
+#define CAPACIDAD_INCREMENTO 12
 
 template <class T>
-class listacirc{
+class ListaCircular{
 	private:
 		int frente;
 		int final;
@@ -18,7 +17,7 @@ class listacirc{
 			return (r+1) % capacidad;
 		}
 	public:
-		listacirc(){
+		ListaCircular(){
 			capacidad = 5;
 			frente = 0;
 			final = capacidad - 1;
@@ -83,7 +82,7 @@ template <class T>
 void listacirc<T>::vaciar(){
 	delete[] nodos;
 }
-/*void listacirc<T>::resize() { //vamos a hacer como si resize no existiera y mejor dejamos el arreglo con un tamaño predeterminado :))))
+/*void listacirc<T>::resize() { //vamos a hacer como si resize no existiera y mejor dejamos el arreglo con un tamaï¿½o predeterminado :))))
     int incremento = capacidad < (CAPACIDAD_INCREMENTO / 2) ? 
     CAPACIDAD_INCREMENTO : capacidad >> 1;
 
