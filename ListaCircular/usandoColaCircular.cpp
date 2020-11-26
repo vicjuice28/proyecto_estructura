@@ -12,16 +12,28 @@ int main(){
     lista.pushFront(2);
     lista.pushFront(4);
     lista.pushFront(5);
-    lista.pushFront(6);
-    lista.pushFront(7);
-    lista.pushFront(9);
-    lista.pushFront(10);
-    lista.pushFront(11);
-    lista.pushFront(12);
+    lista.pushBack(6);
+    lista.pushBack(7);
+    lista.pushBack(8);
+    lista.pushBack(9);
+    lista.pushBack(10);
+    lista.pushBack(11);
+
+    lista.popFront();
+    lista.pushBack(22222);
+    
+    
+
+
+    lista.show();
+    cout << "\n El tamaño de la lista es: " << lista.getSize() <<endl;
+    
+    
+    cout << "\n La capacidad de la lista es: " << lista.getCapacidad() << endl;
     
     
     
-    lista.push(555, 8);
+    
     
     
     
@@ -36,8 +48,8 @@ int main(){
 
     
     
-    lista.show();
-    cout << "\n El tamaño de la lista es: " << lista.getSize();
+    //lista.show();
+    //cout << "\n El tamaño de la lista es: " << lista.getSize();
     //lista.pushFront(3);
     //lista.pushFront(4);
     

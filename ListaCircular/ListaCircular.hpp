@@ -19,7 +19,7 @@ class ListaCircular{
 
 		//calcula la posición siguiente
 		int getNextPosition(int position){
-			return (position + 1) % capacidad;
+			return ((position + 1) % capacidad) ;
 		}
 
 
@@ -36,18 +36,34 @@ class ListaCircular{
 		void pushFront(int dato);
 		void pushBack(int dato);
 		void push(int dato, int position);
-		
+
+		void popFront();
+		void popBack();
 
 		int getSize();
+		int getCapacidad(){
+			return capacidad;
+		}
 
 
 		void show(){
-			for ( int i = 0; i < tamanio; i++ ){
-				cout << "Posición [" << i << "] = " << nodos[i] << endl;
+
+			int aux = frente;
+			for ( int i = 0; i < tamanio ; i++ )
+			{
+				if (getNextPosition(aux) == -1){
+					continue;
+				}
+
+				cout << "Posición [" << getNextPosition(aux-1) << "] = " << nodos[getNextPosition(aux-1)] << endl;
+
+				aux++;
 			}
 
-			cout << "\n\nPosición 0:  " << nodos[0] << endl;
-			cout << "Posición final:  " << nodos[final] << endl;
+			cout << "\n\nPosición frente:  " << frente << endl;
+			cout << "Posición final:  " << final << endl;
+			cout << "\n\n dato en la Posición frente:  " << nodos[frente] << endl;
+			cout << "dato en la Posición final:  " << nodos[final] << endl;
 			
 		}
 
@@ -108,14 +124,13 @@ void ListaCircular::pushFront(int _dato) {
 	}
 	
 		int *temp = new int [ capacidad ];
-		temp[0] = _dato;
+		temp[frente] = _dato;
 
 		
-
+		int h;
 		for ( int i = 0; i < tamanio; i++ ){
 
-		
-			temp[ i + 1 ] = nodos[ i ];
+			temp[ getNextPosition(i) ] = nodos[ getNextPosition(i-1) ];
 
 			//cout << "Ahora : " << i << endl;	
 		}
@@ -150,6 +165,8 @@ void ListaCircular::pushBack(int _dato) {
 		final = getNextPosition( final );
 		nodos[ final ] = _dato;
 		tamanio++;
+
+		cout << "PushBack, la posicion de final ahora es: " << final << endl;
 	
 }
 
@@ -172,20 +189,9 @@ void ListaCircular::push(int _dato, int _position){
 			temp[i] = nodos[i];
 		}
 
-		int h;
-		for ( int i = positionList; i < tamanio; i++ ){
+		for ( int i = positionList; i <= final; i++ ){
 			
-			
-
-			if ( i > capacidad ){
-				h = i - capacidad;
-				cout << "SOY MAYOR QUE LA LISTA AHHHHHHHHH";
-			}else{
-				h = i;
-			}
-
-			cout << "Ahora tempo [" << h+1 << "] --- y --- nodos [ " << h << "] ---"<<endl;
-			temp[ h + 1 ] = nodos[ h ];
+			temp[ getNextPosition(i) ] = nodos[ getNextPosition(i-1) ];
 
 			//cout << "Ahora : " << i << endl;	
 		}
@@ -194,10 +200,9 @@ void ListaCircular::push(int _dato, int _position){
 		
 		delete[] nodos;
 		nodos = temp;
-
-
+		cout << "La posicion actual de final es: " << final << " que será reemplazada por : " << getNextPosition( final ) << endl;
+		final = getNextPosition( final );
 		tamanio++;
-		final = getNextPosition( h );
 
 
 
@@ -205,6 +210,26 @@ void ListaCircular::push(int _dato, int _position){
 	//en casd de que la lista no esté llena, recorro todos los datos
 
 	//encontrar la posicion
+}
+
+
+
+void ListaCircular::popFront(){
+
+	cout << "---Antes de hacer el popFront(), i final es: " << frente << endl; 
+
+	frente = getNextPosition( frente );
+	
+	cout << "----Despues de hacer el popFront(), i final es: " << frente << endl;
+	tamanio--;
+}
+
+void ListaCircular::popBack(){
+	cout << "Antes de hacer el popBack(), i final es: " << final << endl; 
+	final = getNextPosition( final-1 );
+	
+	cout << "Despues de hacer el popBack(), i final es: " << final << endl;
+	tamanio--;
 }
 
 
