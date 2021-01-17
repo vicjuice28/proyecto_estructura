@@ -1,5 +1,17 @@
 #include "store.hpp"
 
+
+menu(){
+
+cout<<endl<<"\tBienvenido al sistema de peliculas por Movie Store"<<endl;
+
+}
+
+
+
+
+
+
 int main()
 {
     Store store = Store();
@@ -13,37 +25,37 @@ int main()
     store.create(9, "Chest", "It's a really bad movie", 2009, 10);
 
     //  //*It works!
-    // store.showAll();
+    //store.showAll();
 
     // //*It wokrs!
-    // cout << (store.find(1).getName()) ;
+    cout << (store.find(1).getName()) ;
 
     // //*It works!
-    // store.remove(1);
-    // store.showAll();
+    //store.remove(1);
+    //store.showAll();
 
     // //* It works!
-    // store.update(1, "B vs S", "tururu", 2000, 120);
-    // store.showAll();
+    //store.update(1, "B vs S", "tururu", 2000, 120);
+    //store.showAll();
 
     // //* It works!
-    // store.showSortByName("a");
-    // store.showSortByName("d");
+    //store.showSortByName("a");
+    //store.showSortByName("d");
 
     // //*It works!
-    // store.showSortByYear("a");
-    // store.showSortByYear("d");
+    //store.showSortByYear("a");
+    //store.showSortByYear("d");
     
     // //* It works!
-    // store.showSortByPrice("a");
-    // store.showSortByPrice("d");
+    //store.showSortByPrice("a");
+    //store.showSortByPrice("d");
 
     // //* It works!
-    // store.showSortByYear("a");
-    // store.showSortByYear("d");
+    //store.showSortByYear("a");
+    //store.showSortByYear("d");
 
     // // It works!
-    // store.showAll();
+    //store.showAll();
 
     return 0;
 }
