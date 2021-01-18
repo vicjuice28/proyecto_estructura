@@ -1,4 +1,6 @@
 #include "store.hpp"
+#include "utils.hpp"
+
 Store store = Store();
 
 int choice; int ID; string nombre; string descrip; int anio; float precio;
@@ -13,28 +15,28 @@ cout<<"\n¿Que accion desea realizar? : "<<endl;cin>>choice;
 switch(choice){
     case 1:
     //Agregar peliculas
-    system("clear");
+    system(CLEAN);
     cout<<"\nIngrese un id para la pelicula: "<<endl; cin>>ID;
     cout<<"\nIngrese nombre de la pelicula: "<<endl; cin>>nombre;
     cout<<"\nIngrese descripcion de la pelicula: "<<endl; cin>>descrip;
     cout<<"Ingrese el año de la pelicula :"<<endl; cin>>anio;
     cout<<"\nIngrese el precio de la pelicula: "<<endl; cin>>precio;
     store.create(ID,nombre,descrip,anio,precio);
-    system("clear");
+    system(CLEAN);
     
     break;
 
     case 2:
     //Eliminar peliculas
-    system("clear");
+    system(CLEAN);
     cout<<"\nDigite el ID de la pelicula que desea eliminar: "<<endl; cin>>ID;
     store.remove(ID);
-    system("clear");
+    system(CLEAN);
     break;
 
     case 3:
     //Editar información
-    system("clear");
+    system(CLEAN);
     cout<<"\nIngrese ID a modificar: "<<endl; cin>>ID;
     cout<<"\nIngrese nuevo nombre: "<<endl; cin>>nombre;
     cout<<"\nIngrese nueva descripcion: "<<endl; cin>>descrip;
@@ -42,13 +44,13 @@ switch(choice){
     cout<<"\nIngrese nuevo precio: "<<endl; cin>>precio;
 
     store.update(ID,nombre,descrip,anio, precio);
-    system("clear");
+    system(CLEAN);
 
     break;
 
     case 4:
     //Mostrar todas las peliculas
-    system("clear");
+    system(CLEAN);
     store.showAll();
 
     break;
@@ -67,14 +69,14 @@ switch(choice){
 
     case 8:
     //Cerrar programa
-    system("clear");
+    system(CLEAN);
     cout<<"\n\tGracias por utilizar nuestro programa"<<endl;
     cout<<"\nCerrando programa...."<<endl;
     exit(1);
     break;
 
     default:
-    system("clear");
+    system(CLEAN);
     cout<<"\n\t\t¡¡¡DIGITE UNA OPCION VALIDA!!!"<<endl;
 
 
