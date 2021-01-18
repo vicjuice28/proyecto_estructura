@@ -1,67 +1,84 @@
 #include "store.hpp"
-
-
-
-int main(){
 Store store = Store();
 
 int choice; int ID; string nombre; string descrip; int anio; float precio;
+
+
+int main(){   
+
 cout<<endl<<"\tBienvenido al sistema de peliculas de Movie Store"<<endl;
 
 cout<<"\n\n1.Agregar peliculas\n2.Eliminar peliculas\n3.Editar información de una pelicula\n4.Mostrar todas las peliculas\n5.Ordenar peliculas por nombre\n6.Ordenar peliculas por año\n7.Mostrar peliculas por precio\n8.Cerrar programa"<<endl;
 cout<<"\n¿Que accion desea realizar? : "<<endl;cin>>choice;
-
 switch(choice){
     case 1:
-    //Agregar pelicula
-    system("clear");
+    //Agregar peliculas
     cout<<"\nIngrese un id para la pelicula: "<<endl; cin>>ID;
     cout<<"\nIngrese nombre de la pelicula: "<<endl; cin>>nombre;
     cout<<"\nIngrese descripcion de la pelicula: "<<endl; cin>>descrip;
     cout<<"Ingrese el año de la pelicula :"<<endl; cin>>anio;
     cout<<"\nIngrese el precio de la pelicula: "<<endl; cin>>precio;
-    //store.create(ID,nombre,descrip,anio,precio);
-    store.create(4, "Batman vs Superman", "It's a really good movie", 2007, 20);
-    system("clear");
+    store.create(ID,nombre,descrip,anio,precio);
+    
     break;
+
     case 2:
-    //Eliminar pelicula
+    //Eliminar peliculas
+    cout<<"\nDigite el ID de la pelicula que desea eliminar: "<<endl; cin>>ID;
+    store.remove(ID);
     break;
+
     case 3:
-    //Editar info
+    //Editar información
+    cout<<"\nIngrese ID a modificar: "<<endl; cin>>ID;
+    cout<<"\nIngrese nuevo nombre: "<<endl; cin>>nombre;
+    cout<<"\nIngrese nueva descripcion: "<<endl; cin>>descrip;
+    cout<<"\nIngrese nuevo año: "<<endl; cin>>anio;
+    cout<<"\nIngrese nuevo precio: "<<endl; cin>>precio;
+
+    store.update(ID,nombre,descrip,anio, precio);
+
     break;
+
     case 4:
     //Mostrar todas las peliculas
+
     store.showAll();
+
     break;
+
     case 5:
     //Ordenar por nombre
     break;
+
     case 6:
     //Ordenar por año
     break;
+
     case 7:
     //Ordenar por precio
     break;
+
     case 8:
     //Cerrar programa
-    cout<<"\nGracias por utilizar el programa\nCerrando...."<<endl;
+    cout<<"\nGracias por utilizar nuestro programa"<<endl;
+    cout<<"\nCerrando programa...."<<endl;
     exit(1);
     break;
+
     default:
-    system("clear");
-    cout<<"\n\t\t¡¡¡DIGITE UNA OPCIÓN VALIDA!!!"<<endl;
-    
-    
+    cout<<"\n\t¡¡¡DIGITE UNA OPCION VALIDA!!!"<<endl;
 
 
 
-}   
-   
-   return main();
-   
-   
-   
+
+
+
+
+}
+return main();
+
+
    
    
    
