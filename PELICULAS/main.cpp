@@ -3,7 +3,7 @@
 
 Store store = Store();
 
-int choice; int ID; string nombre; string descrip; int anio; float precio;
+int choice; int ID; string nombre; string descrip; int anio; float precio; int orden;
 
 
 int main(){   
@@ -57,14 +57,53 @@ switch(choice){
 
     case 5:
     //Ordenar por nombre
+    system(CLEAN);
+    cout<<"\tEscriba 1 para ordenar de forma Ascendente o 2 para ordenar de forma Descendente: "<<endl; cin>>orden;
+    if(orden==1){
+
+        store.showSortByName("a");
+
+    }
+    if(orden==2){
+        store.showSortByName("d");
+    }
+    else{
+        cout<<"\n\t¡¡¡Digite correctamente la opcion que desea!!!"<<endl;
+    }
     break;
 
     case 6:
     //Ordenar por año
+    system(CLEAN);
+    cout<<"\tEscriba 1 para ordenar de forma Ascendente o 2 para ordenar de forma Descendente: "<<endl; cin>>orden;
+    if(orden==1){
+
+        store.showSortByYear("a");
+
+    }
+    if(orden==2){
+        store.showSortByYear("d");
+    }
+    else{
+        cout<<"\n\t¡¡¡Digite correctamente la opcion que desea!!!"<<endl;
+    }
     break;
 
     case 7:
     //Ordenar por precio
+    system(CLEAN);
+    cout<<"\tEscriba 1 para ordenar de forma Ascendente o 2 para ordenar de forma Descendente: "<<endl; cin>>orden;
+    if(orden==1){
+
+        store.showSortByPrice("a");
+
+    }
+    if(orden==2){
+        store.showSortByPrice("d");
+    }
+    else{
+        cout<<"\n\t¡¡¡Digite correctamente la opcion que desea!!!"<<endl;
+    }
     break;
 
     case 8:

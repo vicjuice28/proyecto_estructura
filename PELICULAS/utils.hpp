@@ -2,11 +2,11 @@
 #define UTILS
 
 #ifdef __linux__
-#define CLEAN "CLEAR"
+#define CLEAN "clear"
 #endif // __linux__
  
 #ifdef __MINGW32__
-#define CLEAN "CLS"
+#define CLEAN "cls"
 #endif // __MINGW32__
 
 
