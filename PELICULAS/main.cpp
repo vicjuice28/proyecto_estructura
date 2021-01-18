@@ -62,10 +62,11 @@ switch(choice){
     if(orden==1){
 
         store.showSortByName("a");
-
+        break;
     }
     if(orden==2){
         store.showSortByName("d");
+        break;
     }
     else{
         cout<<"\n\t¡¡¡Digite correctamente la opcion que desea!!!"<<endl;
@@ -79,10 +80,11 @@ switch(choice){
     if(orden==1){
 
         store.showSortByYear("a");
-
+        break;
     }
     if(orden==2){
         store.showSortByYear("d");
+        break;
     }
     else{
         cout<<"\n\t¡¡¡Digite correctamente la opcion que desea!!!"<<endl;
@@ -96,10 +98,12 @@ switch(choice){
     if(orden==1){
 
         store.showSortByPrice("a");
+        break;
 
     }
     if(orden==2){
         store.showSortByPrice("d");
+        break;
     }
     else{
         cout<<"\n\t¡¡¡Digite correctamente la opcion que desea!!!"<<endl;
