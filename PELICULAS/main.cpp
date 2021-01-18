@@ -162,5 +162,22 @@ return main();
     // // It works!
     //store.showAll();
 
+     // // EXIST
+    // if ( store.isEmpty() ){
+    //     cout << "ESTA VACIA" << endl;
+    // }
+    // else{
+    //     cout << "NO ESTA VACIA" << endl;
+    // }
+
+
+    //comprobar si existe una peli en base a su id
+    // if ( store.existMovie(10) ){
+    //     cout << "EXISTE LA PELICULA" << endl;
+    // }else{
+    //     cout << "NO EXISTE" << endl;
+    // }
+
+
     return 0;
 }

@@ -280,6 +280,20 @@ public:
 
         showSortByPricePrivate(mapOfPrice, typeOfOrder);
     }
+
+    bool isEmpty(){
+        return ( movies.size() == 0 ) ? true : false;
+    }
+
+    bool existMovie( int id){
+        for (auto &movie : movies)
+        {
+            if ( movie.first == id ) return true;
+        }
+        return false;
+    }
+
+
 };
 
 
