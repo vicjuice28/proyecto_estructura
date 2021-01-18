@@ -13,23 +13,28 @@ cout<<"\n¿Que accion desea realizar? : "<<endl;cin>>choice;
 switch(choice){
     case 1:
     //Agregar peliculas
+    system("clear");
     cout<<"\nIngrese un id para la pelicula: "<<endl; cin>>ID;
     cout<<"\nIngrese nombre de la pelicula: "<<endl; cin>>nombre;
     cout<<"\nIngrese descripcion de la pelicula: "<<endl; cin>>descrip;
     cout<<"Ingrese el año de la pelicula :"<<endl; cin>>anio;
     cout<<"\nIngrese el precio de la pelicula: "<<endl; cin>>precio;
     store.create(ID,nombre,descrip,anio,precio);
+    system("clear");
     
     break;
 
     case 2:
     //Eliminar peliculas
+    system("clear");
     cout<<"\nDigite el ID de la pelicula que desea eliminar: "<<endl; cin>>ID;
     store.remove(ID);
+    system("clear");
     break;
 
     case 3:
     //Editar información
+    system("clear");
     cout<<"\nIngrese ID a modificar: "<<endl; cin>>ID;
     cout<<"\nIngrese nuevo nombre: "<<endl; cin>>nombre;
     cout<<"\nIngrese nueva descripcion: "<<endl; cin>>descrip;
@@ -37,12 +42,13 @@ switch(choice){
     cout<<"\nIngrese nuevo precio: "<<endl; cin>>precio;
 
     store.update(ID,nombre,descrip,anio, precio);
+    system("clear");
 
     break;
 
     case 4:
     //Mostrar todas las peliculas
-
+    system("clear");
     store.showAll();
 
     break;
@@ -61,13 +67,15 @@ switch(choice){
 
     case 8:
     //Cerrar programa
-    cout<<"\nGracias por utilizar nuestro programa"<<endl;
+    system("clear");
+    cout<<"\n\tGracias por utilizar nuestro programa"<<endl;
     cout<<"\nCerrando programa...."<<endl;
     exit(1);
     break;
 
     default:
-    cout<<"\n\t¡¡¡DIGITE UNA OPCION VALIDA!!!"<<endl;
+    system("clear");
+    cout<<"\n\t\t¡¡¡DIGITE UNA OPCION VALIDA!!!"<<endl;
 
 
 
