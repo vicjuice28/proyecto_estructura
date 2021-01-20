@@ -4,7 +4,8 @@
 #include <bits/stdc++.h>
 #include <iostream>
 #include <map>
-//#include <conio.h>
+#include <iomanip>
+
 
 using namespace std;
 
@@ -93,7 +94,7 @@ private:
         sort(vector.begin(), vector.end(), sortByValueInt);
 
         // Mostramos
-        cout << "Sorted by Price is: -------------------------------------------- " << endl;
+        cout << "Ordenado por precio es: ---------------------------------------- " << endl;
         if (typeOfSort == "a")
         {
             for (int i = 0; i < vector.size(); i++)
@@ -122,7 +123,7 @@ private:
 
         sort(vector.begin(), vector.end(), sortByValueInt);
 
-        cout << " sorted by Year is: -------------------------------------------- " << endl;
+        cout << "Ordenado por año es : -------------------------------------------- " << endl;
         if (typeOfSort == "a")
         {
             for (int i = 0; i < vector.size(); i++)
@@ -152,7 +153,7 @@ private:
         sort(vector.begin(), vector.end(), sortByValueString);
 
         // Mostramos
-        cout << "Sorted by Name is: -------------------------------------------- " << endl;
+        cout << "Ordenados por nombre : -------------------------------------------- " << endl;
         if (typeOfSort == "a")
         {
             for (int i = 0; i < vector.size(); i++)
@@ -193,14 +194,15 @@ public:
         // // it doent's worj on object
         // movies[ movie.getId() ] = movie;
 
-        cout << "registered!!!" << endl;
+        cout << "Registrado!!!" << endl;
     }
 
     void showAll()
     {
+        cout<<"ID\tNombre\tDescripción\tAño\n";
         for (auto &movie : movies)
         {
-            cout << movie.first << "  " << movie.second.getName() << "  " << movie.second.getDescription() << " " << movie.second.getYear() << endl;
+            cout <<movie.first << "\t" << movie.second.getName() << "\t" << movie.second.getDescription() << "\t" << movie.second.getYear() << endl;
         }
     }
 
