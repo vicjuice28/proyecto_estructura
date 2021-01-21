@@ -39,7 +39,7 @@ int main()
         getline(cin, nombre);
         cout << "\nIngrese descripcion de la pelicula: ";
         getline(cin, descrip);
-        cout << "\nIngrese el año de la pelicula :";
+        cout << "\nIngrese el año de la pelicula : ";
         cin >> anio;
         cout << "\nIngrese el precio de la pelicula: ";
         cin >> precio;

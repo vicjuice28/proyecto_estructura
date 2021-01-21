@@ -83,7 +83,7 @@ private:
     void showHeader()
     {
         cout << setw(5);
-        cout << "id"
+        cout << "ID"
              << "|";
 
         cout << setw(30);
@@ -95,11 +95,11 @@ private:
              << "|";
 
         cout << setw(7);
-        cout << "precio"
+        cout << "Precio"
              << "|";
 
         cout << setw(10);
-        cout << "anio"
+        cout << "Anio"
              << "|" << endl
              << endl;
     }
@@ -178,7 +178,7 @@ private:
 
         sort(vector.begin(), vector.end(), sortByValueInt);
 
-        cout << "Ordenado por año es : -------------------------------------------- " << endl;
+        cout << "Ordenado por anio es : -------------------------------------------- " << endl;
         if (typeOfSort == "a")
         {
             showHeader();
