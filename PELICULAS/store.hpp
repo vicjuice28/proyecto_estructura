@@ -6,7 +6,6 @@
 #include <map>
 #include <iomanip>
 
-
 using namespace std;
 
 class Movie
@@ -80,7 +79,31 @@ class Store
 {
 private:
     map<int, Movie> movies;
-    
+
+    void showHeader()
+    {
+        cout << setw(5);
+        cout << "id"
+             << "|";
+
+        cout << setw(30);
+        cout << "Nombre"
+             << "|";
+
+        cout << setw(40);
+        cout << "Descripcion"
+             << "|";
+
+        cout << setw(7);
+        cout << "precio"
+             << "|";
+
+        cout << setw(10);
+        cout << "anio"
+             << "|" << endl
+             << endl;
+    }
+
     //type of sort could be "a" or "d"
     void showSortByPricePrivate(map<int, int> &map, string typeOfSort)
     {
@@ -97,20 +120,52 @@ private:
         cout << "Ordenado por precio es: ---------------------------------------- " << endl;
         if (typeOfSort == "a")
         {
+            showHeader();
+
             for (int i = 0; i < vector.size(); i++)
             {
-                cout << vector[i].first << " --> " << vector[i].second << endl;
+                int _id = vector[i].first;
+                cout << setw(5);
+                cout << movies.at(_id).getId() << "|";
+
+                cout << setw(30);
+                cout << movies.at(_id).getName() << "|";
+
+                cout << setw(40);
+                cout << movies.at(_id).getDescription() << "|";
+
+                cout << setw(7);
+                cout << movies.at(_id).getPrice() << "|";
+
+                cout << setw(10);
+                cout << movies.at(_id).getYear() << "|" << endl;
             }
         }
         else
         {
+            showHeader();
+
             for (int i = vector.size() - 1; i >= 0; i--)
             {
-                cout << vector[i].first << " --> " << vector[i].second << endl;
+                int _id = vector[i].first;
+                cout << setw(5);
+                cout << movies.at(_id).getId() << "|";
+
+                cout << setw(30);
+                cout << movies.at(_id).getName() << "|";
+
+                cout << setw(40);
+                cout << movies.at(_id).getDescription() << "|";
+
+                cout << setw(7);
+                cout << movies.at(_id).getPrice() << "|";
+
+                cout << setw(10);
+                cout << movies.at(_id).getYear() << "|" << endl;
             }
         }
     }
-    
+
     //type of sort could be "a" or "d"
     void showSortByYearPrivate(map<int, int> &map, string typeOfSort)
     {
@@ -126,16 +181,47 @@ private:
         cout << "Ordenado por año es : -------------------------------------------- " << endl;
         if (typeOfSort == "a")
         {
+            showHeader();
             for (int i = 0; i < vector.size(); i++)
             {
-                cout << vector[i].first << " --> " << vector[i].second << endl;
+                int _id = vector[i].first;
+                cout << setw(5);
+                cout << movies.at(_id).getId() << "|";
+
+                cout << setw(30);
+                cout << movies.at(_id).getName() << "|";
+
+                cout << setw(40);
+                cout << movies.at(_id).getDescription() << "|";
+
+                cout << setw(7);
+                cout << movies.at(_id).getPrice() << "|";
+
+                cout << setw(10);
+                cout << movies.at(_id).getYear() << "|" << endl;
             }
         }
         else
         {
+
+            showHeader();
             for (int i = vector.size() - 1; i >= 0; i--)
             {
-                cout << vector[i].first << " --> " << vector[i].second << endl;
+                int _id = vector[i].first;
+                cout << setw(5);
+                cout << movies.at(_id).getId() << "|";
+
+                cout << setw(30);
+                cout << movies.at(_id).getName() << "|";
+
+                cout << setw(40);
+                cout << movies.at(_id).getDescription() << "|";
+
+                cout << setw(7);
+                cout << movies.at(_id).getPrice() << "|";
+
+                cout << setw(10);
+                cout << movies.at(_id).getYear() << "|" << endl;
             }
         }
     }
@@ -156,16 +242,48 @@ private:
         cout << "Ordenados por nombre : -------------------------------------------- " << endl;
         if (typeOfSort == "a")
         {
+            showHeader();
             for (int i = 0; i < vector.size(); i++)
             {
-                cout << vector[i].first << " --> " << vector[i].second << endl;
+                int _id = vector[i].first;
+                cout << setw(5);
+                cout << movies.at(_id).getId() << "|";
+
+                cout << setw(30);
+                cout << movies.at(_id).getName() << "|";
+
+                cout << setw(40);
+                cout << movies.at(_id).getDescription() << "|";
+
+                cout << setw(7);
+                cout << movies.at(_id).getPrice() << "|";
+
+                cout << setw(10);
+                cout << movies.at(_id).getYear() << "|" << endl;
             }
         }
         else
         {
+
+            showHeader();
             for (int i = vector.size() - 1; i >= 0; i--)
             {
-                cout << vector[i].first << " --> " << vector[i].second << endl;
+
+                int _id = vector[i].first;
+                cout << setw(5);
+                cout << movies.at(_id).getId() << "|";
+
+                cout << setw(30);
+                cout << movies.at(_id).getName() << "|";
+
+                cout << setw(40);
+                cout << movies.at(_id).getDescription() << "|";
+
+                cout << setw(7);
+                cout << movies.at(_id).getPrice() << "|";
+
+                cout << setw(10);
+                cout << movies.at(_id).getYear() << "|" << endl;
             }
         }
     }
@@ -180,8 +298,6 @@ public:
     {
         return (a.second < b.second);
     }
-
-    
 
     void create(int id, string name, string description, int year, float price)
     {
@@ -199,10 +315,26 @@ public:
 
     void showAll()
     {
-        cout<<"ID\tNombre\tDescripción\tAño\n";
+
+        showHeader();
+
         for (auto &movie : movies)
         {
-            cout <<movie.first << "\t" << movie.second.getName() << "\t" << movie.second.getDescription() << "\t" << movie.second.getYear() << endl;
+
+            cout << setw(5);
+            cout << movie.first << "|";
+
+            cout << setw(30);
+            cout << movie.second.getName() << "|";
+
+            cout << setw(40);
+            cout << movie.second.getDescription() << "|";
+
+            cout << setw(7);
+            cout << movie.second.getPrice() << "|";
+
+            cout << setw(10);
+            cout << movie.second.getYear() << "|" << endl;
         }
     }
 
@@ -219,12 +351,12 @@ public:
     {
         for (auto &movie : movies)
         {
-            if ( movie.first == id ){
+            if (movie.first == id)
+            {
                 movies.erase(id);
                 cout << "Eliminado con exito . . ." << endl;
                 break;
             }
-            
         }
     }
 
@@ -272,7 +404,8 @@ public:
         showSortByYearPrivate(mapOfYear, typeOfOrder);
     }
 
-    void showSortByPrice(string typeOfOrder){
+    void showSortByPrice(string typeOfOrder)
+    {
         map<int, int> mapOfPrice;
 
         for (auto &movie : movies)
@@ -283,23 +416,20 @@ public:
         showSortByPricePrivate(mapOfPrice, typeOfOrder);
     }
 
-    bool isEmpty(){
-        return ( movies.size() == 0 ) ? true : false;
+    bool isEmpty()
+    {
+        return (movies.size() == 0) ? true : false;
     }
 
-    bool existMovie( int id){
+    bool existMovie(int id)
+    {
         for (auto &movie : movies)
         {
-            if ( movie.first == id ) return true;
+            if (movie.first == id)
+                return true;
         }
         return false;
     }
-
-
 };
-
-
-
-
 
 #endif

@@ -1,6 +1,10 @@
 #include "store.hpp"
 #include "utils.hpp"
 
+//
+#include <limits>
+#include <ios>
+
 Store store = Store();
 
 int choice;
@@ -14,6 +18,8 @@ int orden;
 int main()
 {
 
+    // Agregar Peliculas por defecto
+
     cout << endl
          << "\tBienvenido al sistema de peliculas de Movie Store" << endl;
 
@@ -25,15 +31,17 @@ int main()
     case 1:
         //Agregar peliculas
         system(CLEAN);
-        cout << "\nIngrese un id para la pelicula: " << endl;
+        cout << "\nIngrese un id para la pelicula: ";
         cin >> ID;
-        cout << "\nIngrese nombre de la pelicula: " << endl;
-        cin >> nombre;
-        cout << "\nIngrese descripcion de la pelicula: " << endl;
-        cin >> descrip;
-        cout << "Ingrese el año de la pelicula :" << endl;
+        //fIX PROBLEM BETWEEN CIN AND GETLINE
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\nIngrese nombre de la pelicula: ";
+        getline(cin, nombre);
+        cout << "\nIngrese descripcion de la pelicula: ";
+        getline(cin, descrip);
+        cout << "\nIngrese el año de la pelicula :";
         cin >> anio;
-        cout << "\nIngrese el precio de la pelicula: " << endl;
+        cout << "\nIngrese el precio de la pelicula: ";
         cin >> precio;
         store.create(ID, nombre, descrip, anio, precio);
         system(CLEAN);
@@ -52,15 +60,17 @@ int main()
     case 3:
         //Editar información
         system(CLEAN);
-        cout << "\nIngrese ID a modificar: " << endl;
+        cout << "\nIngrese ID a modificar: ";
         cin >> ID;
-        cout << "\nIngrese nuevo nombre: " << endl;
-        cin >> nombre;
-        cout << "\nIngrese nueva descripcion: " << endl;
-        cin >> descrip;
-        cout << "\nIngrese nuevo año: " << endl;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        cout << "\nIngrese nuevo nombre: ";
+        getline(cin, nombre);
+        cout << "\nIngrese nueva descripcion: ";
+        getline(cin, descrip);
+        cout << "\nIngrese nuevo año: ";
         cin >> anio;
-        cout << "\nIngrese nuevo precio: " << endl;
+        cout << "\nIngrese nuevo precio: ";
         cin >> precio;
 
         store.update(ID, nombre, descrip, anio, precio);
@@ -145,35 +155,27 @@ int main()
         //Cerrar programa
         system(CLEAN);
         cout << "\n\tGracias por utilizar nuestro programa" << endl;
-        cout << "\nCerrando programa....\n" << endl;
+        cout << "\nCerrando programa....\n"
+             << endl;
         exit(1);
+        break;
+
+    case 100:
+        store.create(1, "Víctor y la casa de papel", "Bored", 1999, 2);
+        store.create(2, "La llegada", "10 de 10", 2019, 1200);
+        store.create(3, "El despertar de Fernando", "+18", 2001, 3000);
+        store.create(4, "La letra N", "buuu", 2012, 1000);
+        store.create(5, "La pelicula", "meh", 2015, 1200);
+        system(CLEAN);
+
         break;
 
     default:
         system(CLEAN);
         cout << "\n\t\t¡¡¡DIGITE UNA OPCION VALIDA!!!" << endl;
     }
+
     return main();
-
-   
-
-    // // It works!
-    //store.showAll();
-
-    // // EXIST
-    // if ( store.isEmpty() ){
-    //     cout << "ESTA VACIA" << endl;
-    // }
-    // else{
-    //     cout << "NO ESTA VACIA" << endl;
-    // }
-
-    //comprobar si existe una peli en base a su id
-    // if ( store.existMovie(10) ){
-    //     cout << "EXISTE LA PELICULA" << endl;
-    // }else{
-    //     cout << "NO EXISTE" << endl;
-    // }
 
     return 0;
 }
